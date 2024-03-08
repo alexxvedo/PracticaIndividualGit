@@ -1,83 +1,107 @@
-Historial de comandos
-
 ------ CREACIÓN ESTRUCTURA BÁSICA ------
-
+# Crea el directorio principal del repositorio y navega dentro de él
 mkdir RaizRepositorio
 cd RaizRepositorio/
+
+# Inicializa un nuevo repositorio de Git en el directorio actual
 git init
+
+# Crea dos subdirectorios, Proyectos y Procesos
 mkdir Proyectos Procesos
+
+# Crea un subdirectorio dentro de Proyectos
 cd Proyectos/
 mkdir Prj1
 cd ../Procesos/
+
+# Crea un subdirectorio dentro de Procesos para Control de Cambios
 mkdir ControlDeCambios
 cd ..
+
+# Crea un archivo de texto para llevar un registro de los comandos utilizados
 echo "Historial de comandos" > historia.txt
 
 ------ ACTUALIZAR REPOSITORIO LOCAL ------
-El docomuento y las plantillas fueron introducidas en la carpeta a mano.
+# Documento y plantillas añadidos manualmente, aquí se agregan al seguimiento de Git
 git add .
-git commit -m "Agregada la descipcion inicial del proceso de control de cambios y plantillas en blanco"
+
+# Guarda los cambios en el historial con un mensaje descriptivo
+git commit -m "Agregada la descripcion inicial del proceso de control de cambios y plantillas en blanco"
 
 ------ ETIQUETA R1 ------
+# Crea una etiqueta anotada para marcar la versión R1 del repositorio
 git tag -a R1 -m "Versión R1 del repositorio"
 
 ------ RAMA MEJORAS ------
+# Crea una nueva rama llamada Mejoras
 git branch Mejoras
+
+# Cambia a la rama Mejoras
 git checkout Mejoras
-El fichero con las propuestas fue introducido a mano en el directorio
+
+# Se introducen cambios manualmente, luego se agregan al seguimiento y se confirman
 git add .
 git commit -m "Incluidas las propuestas de mejora en la rama Mejoras"
-El documento fue actualizado a la versión 2 a mano
+
+# Actualización del documento a la versión 2 realizada manualmente
 git add .
 git commit -m "Actualizada la descripcion del proceso de control de cambios a la version 2"
 
 ------ MERGE DE LA RAMA PRINCIPAL CON LA DE MEJORAS ------
+# Cambia a la rama master para fusionarla con la rama Mejoras
 git checkout master
 git merge Mejoras
+
+# Elimina la rama Mejoras después de fusionarla
 git branch -d Mejora
 
 ------ ELIMINACIÓN DEL PDF CON LAS PROPUESTAS DE MEJORA ------
+# Elimina el PDF de propuestas de mejora y guarda el cambio
 rm Procesos/ControlDeCambios/DP_ControldeCambios_Grupo3-v1_1.pdf
 git add .
 git commit -m "Eliminado el PDF de propuestas de mejora tras el merge"
 
 ------ CREACIÓN DEL TAG DE LA VERSIÓN 2 ------
+# Crea una etiqueta anotada para marcar la versión R2 del repositorio
 git tag -a R2 -m "Version R2 del repositorio"
 
 ------ ACTUALIZACIÓN DE LA RAMA PRINCIPAL A LA VERSIÓN 2 ------
-El documento fue actualizado a la version 3 a mano 
+# Se actualiza el documento a la versión 3 manualmente
 git add .
 git commit -m "Sustituida la version 2 del proceso por la version 3"
 
 ------ DEVOLUCIÓN DE LA RAMA A ESTADO ANTERIOR ------
+# Revierte los cambios al estado anterior al último commit
 git reset --hard HEAD^
-El documento y las plantillas fueron actualizadas a mano
+
+# Actualiza el documento y las plantillas a la versión 3 manualmente
 git add .
-git commit -m "Actualización de la version 3 y las plantillas"[master 4ba84c6] Actualización de la version 3 y las plantillas
+git commit -m "Actualización de la version 3 y las plantillas"
 git tag -a R3 -m "Version R3 del repositorio"
 
 ------ PUSH DE LA RAMA PRINCIPAL Y LOS TAGS A UN REPOSITORIO DE GITHUB ------
+# Vincula el repositorio local con un repositorio remoto en GitHub
 git remote add origin git@github.com:alexxvedo/PracticaIndividualGit.git
+
+# Renombra la rama actual a master
 git branch -M master
+
+# Sube la rama master y las etiquetas al repositorio remoto
 git push -u origin master --tags
 
-
 ------ COMPROBAR DE QUE EL REPOSITORIO LOCAL ESTE ACTUALIZADO ------
+# Descarga cambios del repositorio remoto para asegurarse de que el local está actualizado
 git pull
 
 ------ COMPROBACIÓN ENTRE historias.txt ------
+# Muestra las diferencias entre el archivo historia.txt y su último estado en Git
 git diff HEAD historia.txt
 
 ------ ACTUALIZACIÓN DEL REPOSITORIO CON LOS CAMBIOS ------
+# Añade los cambios pendientes al seguimiento y los guarda en el historial
 git add .
 git commit -m "Actualizacion de documento"
+
+# Sube todos los cambios recientes al repositorio remoto en GitHub
 git push
-
-
-
-
-
-
-
-
 
