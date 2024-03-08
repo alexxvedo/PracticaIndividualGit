@@ -1,2 +1,83 @@
 Historial de comandos
+
+------ CREACIÓN ESTRUCTURA BÁSICA ------
+
+mkdir RaizRepositorio
+cd RaizRepositorio/
+git init
+mkdir Proyectos Procesos
+cd Proyectos/
+mkdir Prj1
+cd ../Procesos/
+mkdir ControlDeCambios
+cd ..
+echo "Historial de comandos" > historia.txt
+
+------ ACTUALIZAR REPOSITORIO LOCAL ------
+El docomuento y las plantillas fueron introducidas en la carpeta a mano.
+git add .
+git commit -m "Agregada la descipcion inicial del proceso de control de cambios y plantillas en blanco"
+
+------ ETIQUETA R1 ------
+git tag -a R1 -m "Versión R1 del repositorio"
+
+------ RAMA MEJORAS ------
+git branch Mejoras
+git checkout Mejoras
+El fichero con las propuestas fue introducido a mano en el directorio
+git add .
+git commit -m "Incluidas las propuestas de mejora en la rama Mejoras"
+El documento fue actualizado a la versión 2 a mano
+git add .
+git commit -m "Actualizada la descripcion del proceso de control de cambios a la version 2"
+
+------ MERGE DE LA RAMA PRINCIPAL CON LA DE MEJORAS ------
+git checkout master
+git merge Mejoras
+git branch -d Mejora
+
+------ ELIMINACIÓN DEL PDF CON LAS PROPUESTAS DE MEJORA ------
+rm Procesos/ControlDeCambios/DP_ControldeCambios_Grupo3-v1_1.pdf
+git add .
+git commit -m "Eliminado el PDF de propuestas de mejora tras el merge"
+
+------ CREACIÓN DEL TAG DE LA VERSIÓN 2 ------
+git tag -a R2 -m "Version R2 del repositorio"
+
+------ ACTUALIZACIÓN DE LA RAMA PRINCIPAL A LA VERSIÓN 2 ------
+El documento fue actualizado a la version 3 a mano 
+git add .
+git commit -m "Sustituida la version 2 del proceso por la version 3"
+
+------ DEVOLUCIÓN DE LA RAMA A ESTADO ANTERIOR ------
+git reset --hard HEAD^
+El documento y las plantillas fueron actualizadas a mano
+git add .
+git commit -m "Actualización de la version 3 y las plantillas"[master 4ba84c6] Actualización de la version 3 y las plantillas
+git tag -a R3 -m "Version R3 del repositorio"
+
+------ PUSH DE LA RAMA PRINCIPAL Y LOS TAGS A UN REPOSITORIO DE GITHUB ------
+git remote add origin git@github.com:alexxvedo/PracticaIndividualGit.git
+git branch -M master
+git push -u origin master --tags
+
+
+------ COMPROBAR DE QUE EL REPOSITORIO LOCAL ESTE ACTUALIZADO ------
 git pull
+
+------ COMPROBACIÓN ENTRE historias.txt ------
+git diff HEAD historia.txt
+
+------ ACTUALIZACIÓN DEL REPOSITORIO CON LOS CAMBIOS ------
+git add .
+git commit -m "Actualizacion de documento"
+git push
+
+
+
+
+
+
+
+
+
