@@ -105,3 +105,5 @@ git commit -m "Actualizacion de documento"
 # Sube todos los cambios recientes al repositorio remoto en GitHub
 git push
 
+Enlace para acceder al repositorio: https://github.com/alexxvedo/PracticaIndividualGit
+
